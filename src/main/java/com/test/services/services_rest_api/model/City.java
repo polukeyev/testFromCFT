@@ -23,6 +23,7 @@ public class City {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
+    @JsonIgnore
     private Country country;
 
     @OneToMany(

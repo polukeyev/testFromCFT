@@ -21,17 +21,15 @@ public class ServicePointDAO {
         this.entityManager = entityManager;
     }
 
-
-    public List<ServicePoint> getServicesOfCity(int id) {
+    public List<ServicePoint> getAllServices() {
         Session session = entityManager.unwrap(Session.class);
 
-        List<ServicePoint> services = session.createQuery
-                ("from ServicePoint where city_id=:id", ServicePoint.class)
-                .setParameter("id", id)
+        List<ServicePoint> services = session.createQuery("from ServicePoint", ServicePoint.class)
                 .getResultList();
 
         return services;
     }
+
 
     public ServicePoint showOnePoint(int id) {
         Session session = entityManager.unwrap(Session.class);
@@ -41,10 +39,8 @@ public class ServicePointDAO {
     public void saveServicePoint(ServicePoint servicePoint) {
         Session session = entityManager.unwrap(Session.class);
 
-        System.out.println(servicePoint);
-
-        servicePoint.setCity(
-                session.createQuery("from City where name=:name", City.class)
+        servicePoint.setCity(session
+                .createQuery("from City where name=:name", City.class)
                 .setParameter("name", servicePoint.getCity().getName())
                 .getSingleResult()
         );
@@ -66,8 +62,6 @@ public class ServicePointDAO {
 
         servicePoint.setServiceList(services);
 
-        System.out.println(servicePoint);
-
         session.saveOrUpdate("servicePoint", servicePoint);
     }
 
@@ -77,13 +71,16 @@ public class ServicePointDAO {
                 .setParameter("id",id)
                 .executeUpdate();
     }
-
-    public List<ServicePoint> getAllServices() {
-        Session session = entityManager.unwrap(Session.class);
-
-        List<ServicePoint> services = session.createQuery("from ServicePoint", ServicePoint.class)
-                .getResultList();
-
-        return services;
-    }
 }
+
+/////////////////////////test methods//////////////////////////////////
+//    public List<ServicePoint> getServicesOfCity(int id) {
+//        Session session = entityManager.unwrap(Session.class);
+//
+//        List<ServicePoint> services = session.createQuery
+//                ("from ServicePoint where city_id=:id", ServicePoint.class)
+//                .setParameter("id", id)
+//                .getResultList();
+//
+//        return services;
+//    }

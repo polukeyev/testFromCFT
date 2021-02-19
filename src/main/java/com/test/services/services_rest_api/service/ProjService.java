@@ -31,13 +31,18 @@ public class ProjService {
     }
 
     @Transactional
-    public List<City> getCitiesOfCountry(int id) {
-        return cityDAO.getCitiesOfCountry(id);
+    public List<City> getAllCities() {
+        return cityDAO.getAllCities();
     }
 
     @Transactional
-    public List<ServicePoint> getServicesOfCity(int id) {
-        return servicePointDAO.getServicesOfCity(id);
+    public List<com.test.services.services_rest_api.model.Service> getAllServices() {
+        return serviceDAO.getAllServices();
+    }
+
+    @Transactional
+    public List<ServicePoint> getAllServicePoints() {
+        return servicePointDAO.getAllServices();
     }
 
     @Transactional
@@ -54,29 +59,26 @@ public class ProjService {
     public void deleteServicePoint(int id) {
         servicePointDAO.deleteService(id);
     }
-
-    @Transactional
-    public Country showOneCountry(int id) {
-        return countryDAO.showOneCountry(id);
-    }
-
-    @Transactional
-    public City showOneCity(int id) {
-        return cityDAO.showOneCity(id);
-    }
-
-    @Transactional
-    public List<City> getAllCities() {
-        return cityDAO.getAllCities();
-    }
-
-    @Transactional
-    public List<com.test.services.services_rest_api.model.Service> getAllServices() {
-        return serviceDAO.getAllServices();
-    }
-
-    @Transactional
-    public List<ServicePoint> getAllServicePoints() {
-        return servicePointDAO.getAllServices();
-    }
 }
+
+/////////////////////////test methods//////////////////////////////////
+
+//    @Transactional
+//    public List<City> getCitiesOfCountry(int id) {
+//        return cityDAO.getCitiesOfCountry(id);
+//    }
+//
+//    @Transactional
+//    public List<ServicePoint> getServicesOfCity(int id) {
+//        return servicePointDAO.getServicesOfCity(id);
+//    }
+
+//    @Transactional
+//    public Country showOneCountry(int id) {
+//        return countryDAO.showOneCountry(id);
+//    }
+//
+//    @Transactional
+//    public City showOneCity(int id) {
+//        return cityDAO.showOneCity(id);
+//    }

@@ -1,8 +1,5 @@
 package com.test.services.services_rest_api.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -10,9 +7,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "services")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class ServicePoint {
 
     @Id
@@ -29,7 +23,8 @@ public class ServicePoint {
     private String address;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
-            CascadeType.MERGE, CascadeType.REFRESH})
+            CascadeType.MERGE, CascadeType.REFRESH},
+    fetch = FetchType.EAGER)
     @JoinTable(
             name="servicepoints_sevices",
             joinColumns = @JoinColumn(name="serv_point_id"),
@@ -52,7 +47,7 @@ public class ServicePoint {
     public ServicePoint() {
     }
 
-    public ServicePoint(String name, String address) {
+    public ServicePoint(String name, String address, List<Service> serviceList, City city, Country country) {
         this.name = name;
         this.address = address;
         this.serviceList = serviceList;

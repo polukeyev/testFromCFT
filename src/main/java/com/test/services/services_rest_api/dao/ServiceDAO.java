@@ -20,8 +20,7 @@ public class ServiceDAO {
     public List<Service> getAllServices() {
         Session session = entityManager.unwrap(Session.class);
 
-        List<Service> serviceList = session.createQuery("from Service",
-                com.test.services.services_rest_api.model.Service.class)
+        List<Service> serviceList = session.createQuery("from Service", Service.class)
                 .getResultList();
 
         return serviceList;

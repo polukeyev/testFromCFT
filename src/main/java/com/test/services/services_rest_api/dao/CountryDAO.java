@@ -24,9 +24,10 @@ public class CountryDAO {
                 .getResultList();
         return countries;
     }
-
-    public Country showOneCountry(int id) {
-        Session session = entityManager.unwrap(Session.class);
-        return session.get(Country.class, id);
-    }
 }
+
+/////////////////////////test methods//////////////////////////////////
+//    public Country showOneCountry(int id) {
+//        Session session = entityManager.unwrap(Session.class);
+//        return session.get(Country.class, id);
+//    }

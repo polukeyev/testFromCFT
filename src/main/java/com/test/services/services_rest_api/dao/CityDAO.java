@@ -18,25 +18,24 @@ public class CityDAO {
         this.entityManager = entityManager;
     }
 
-
-
     public List<City> getAllCities() {
         Session session = entityManager.unwrap(Session.class);
         List<City> cities = session.createQuery("from City", City.class)
                 .getResultList();
         return cities;
     }
-
-    public List<City> getCitiesOfCountry(int id) {
-        Session session = entityManager.unwrap(Session.class);
-        List<City> cities = session.createQuery("from City where country_id = :cId", City.class)
-                .setParameter("cId",id)
-                .getResultList();
-        return cities;
-    }
-
-    public City showOneCity(int id) {
-        Session session = entityManager.unwrap(Session.class);
-        return session.get(City.class, id);
-    }
 }
+
+/////////////////////////test methods//////////////////////////////////
+//    public List<City> getCitiesOfCountry(int id) {
+//        Session session = entityManager.unwrap(Session.class);
+//        List<City> cities = session.createQuery("from City where country_id = :cId", City.class)
+//                .setParameter("cId",id)
+//                .getResultList();
+//        return cities;
+//    }
+
+//    public City showOneCity(int id) {
+//        Session session = entityManager.unwrap(Session.class);
+//        return session.get(City.class, id);
+//    }

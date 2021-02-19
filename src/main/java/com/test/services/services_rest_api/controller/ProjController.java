@@ -23,22 +23,10 @@ public class ProjController {
         return countryList;
     }
 
-    @GetMapping("/countries/{countryId}")
-    public Country showOneCountry(@PathVariable("countryId") int id) {
-        Country country = projService.showOneCountry(id);
-        return country;
-    }
-
     @GetMapping("/cities")
     public List<City> showCities() {
         List<City> cityList = projService.getAllCities();
         return cityList;
-    }
-
-    @GetMapping("/cities/{cityId}")
-    public City showOneCity(@PathVariable("cityId") int id) {
-        City city = projService.showOneCity(id);
-        return city;
     }
 
     @GetMapping("/services")
@@ -78,66 +66,16 @@ public class ProjController {
     }
 }
 
-//
-//
-////-************************************************************************
-//    @GetMapping("/countries/cities/{cityId}")
-//    public String showServices(@PathVariable("cityId") int id, Model model) {
-//        model.addAttribute("servicesOfCity", projService.getServicesOfCity(id));
-//        model.addAttribute("countryId", getCountryId());
-//        cityId = id;
-//        return "/servicepoints";
+/////////////////////////test methods//////////////////////////////////
+
+//    @GetMapping("/countries/{countryId}")
+//    public Country showOneCountry(@PathVariable("countryId") int id) {
+//        Country country = projService.showOneCountry(id);
+//        return country;
 //    }
-////-----------------------------------------------------------
-//    @GetMapping("/countries/cities/addservice")
-//    public String addService(@ModelAttribute("servicePoint") ServicePoint servicePoint) {
-//        return "/addservice";
+
+//    @GetMapping("/cities/{cityId}")
+//    public City showOneCity(@PathVariable("cityId") int id) {
+//        City city = projService.showOneCity(id);
+//        return city;
 //    }
-//
-//    @PostMapping("/countries/cities/servicepoints")
-//    public String createService(@ModelAttribute("servicePoint") ServicePoint servicePoint,
-//                                BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) return "/countries/cities/addservice";
-//
-//        projService.saveServicePoint(servicePoint, getCityId(), getCountryId());
-//        return "redirect:/countries/cities/"+getCityId();
-//    }
-////------------------------------------------------------------
-//    @GetMapping("/countries/cities/servicepoints/{serviceId}")
-//    public String showService(@PathVariable("serviceId") int id, Model model) {
-//        model.addAttribute("servicePoint", projService.showOnePoint(id));
-//        return "/point";
-//    }
-////------------------------------------------------------------
-//
-//    @GetMapping("/countries/cities/servicepoints/{serviceId}/editservice")
-//    public String editService(Model model, @PathVariable("serviceId") int id) {
-//        model.addAttribute("servicePoint",projService.showOnePoint(id));
-//        return "/editservice";
-//
-//    }
-//
-//    @PatchMapping("/countries/cities/servicepoints/")
-//    public String updateService(@ModelAttribute("servicePoint") @Valid ServicePoint servicePoint,
-//                                BindingResult bindingResult,
-//                                @RequestParam("cityId") int cityId, @RequestParam("countryId") int countryId) {
-//        if (bindingResult.hasErrors()) return "/countries/cities/servicepoints/editservice";
-//
-//        projService.updateServicePoint(servicePoint, cityId, countryId);
-//        return "redirect:/countries/cities/"+cityId;
-//    }
-//
-//    @DeleteMapping("/countries/cities/servicepoints/{serviceId}")
-//    public String deleteService(@PathVariable("serviceId") int id) {
-//        projService.deleteService(id);
-//        return "redirect:/countries/cities/"+getCityId();
-//    }
-//
-//    public static int getCountryId() {
-//        return countryId;
-//    }
-//
-//    public static int getCityId() {
-//        return cityId;
-//    }
-//}
